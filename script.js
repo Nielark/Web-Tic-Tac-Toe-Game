@@ -643,7 +643,7 @@ window.onload = function () {
         else {
             vsCompMove();
         }
-
+    
         setTimeout(function () {
             var computerMove = Math.floor((Math.random() * 9));
 
@@ -660,12 +660,10 @@ window.onload = function () {
                 }
             }
             else {
+                allocatedCell++;
                 computerDecission();
             }
-            alert(computerMove);
         }, 500);
-
-        
     }
 
     // Function to handle a player's move
@@ -693,11 +691,11 @@ window.onload = function () {
     });
 
     function game() {
-        // Multiplayer Game
-        if (gameMode == "multiplayer") {
-            // Add a single click event listener for all cells
-            for (let cellPos = 0; cellPos < 9; cellPos++) {
-                cell[cellPos].addEventListener('click', function () {
+        // Add a single click event listener for all cells
+        for (let cellPos = 0; cellPos < 9; cellPos++) {
+            cell[cellPos].addEventListener('click', function () {
+                // Multiplayer Mode
+                if (gameMode === "multiplayer") {
                     if (playerID === 1) {
                         playersMove(cellPos, 'X'); // Player 1's move
                         playerID = 2; // Switch to Player 2 for the next move
@@ -712,23 +710,37 @@ window.onload = function () {
                     if (p1Score != 0 || p2Score != 0 || allocatedCell == 9) {
                         setTimeout(result, 500);    // Function call to display the result of the game with a bit delay
                     }
-                });
-            }
-        }
-        // Versus computer game
-        else {
-            // Add a single click event listener for all cells
-            for (let cellPos = 0; cellPos < 9; cellPos++) {
-                cell[cellPos].addEventListener('click', function () {
-                    vsCompMove(cellPos);
+                }
+                // Versus Computer Mode
+                else {
+                    // vsCompMove(cellPos);
+                    //if (playerID === 1) {
+                        playersMove(cellPos, 'X'); // Player 1's move
+                        //playerID = 2; // Switch to Player 2 for the next move
+                    //}
+
+                    setTimeout(function() {
+                        if (compFirstMove == true) {
+                            var computerMove = Math.floor((Math.random() * 9));
+                            if (arrboard[computerMove] === '#') {
+                                playersMove(computerMove, 'O'); // Player 2's move
+                                compFirstMove = false;
+                            }
+                        }
+                        else {
+                            allocatedCell++;
+                            computerDecission();
+                        }
+                        //playerID = 1; // Switch to Player 1 for the next move
+                    }, 500)
 
                     gameLogic();
 
                     if (p1Score != 0 || p2Score != 0 || allocatedCell == 9) {
                         setTimeout(result, 500);    // Function call to display the result of the game with a bit delay
                     }
-                });
-            }
+                }
+            });
         }
     }
 }
