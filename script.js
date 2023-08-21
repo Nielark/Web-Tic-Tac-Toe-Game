@@ -1,5 +1,5 @@
 window.onload = function () {
-    // Variable declarations
+    //* Variable declarations
     var gameMode = "";
     var arrboard = ['#', '#', '#', '#', '#', '#', '#', '#', '#'];  // Represents the game board
     var p1Score = 0, p2Score = 0, allocatedCell = 0, playerID = 1;
@@ -36,8 +36,11 @@ window.onload = function () {
         if (p1Score > p2Score) {
             document.getElementById("displayRes").textContent = "Player 1 wins";
         }
-        else if (p1Score < p2Score) {
+        else if (p1Score < p2Score && gameMode === "multiplayer") {
             document.getElementById("displayRes").textContent = "Player 2 wins";
+        }
+        else if (p1Score < p2Score && gameMode === "vscomputer") {
+            document.getElementById("displayRes").textContent = "Computer wins";
         }
         else {
             document.getElementById("displayRes").textContent = "No one wins";
@@ -54,7 +57,7 @@ window.onload = function () {
             (arrboard[0] == 'X' && arrboard[4] == 'X' && arrboard[8] == 'X') ||
             (arrboard[2] == 'X' && arrboard[4] == 'X' && arrboard[6] == 'X')
         ) {
-            p1Score++;
+            p1Score = 1;
         }
         else if ((arrboard[0] == 'O' && arrboard[1] == 'O' && arrboard[2] == 'O') ||
             (arrboard[3] == 'O' && arrboard[4] == 'O' && arrboard[5] == 'O') ||
@@ -65,7 +68,7 @@ window.onload = function () {
             (arrboard[0] == 'O' && arrboard[4] == 'O' && arrboard[8] == 'O') ||
             (arrboard[2] == 'O' && arrboard[4] == 'O' && arrboard[6] == 'O')
         ) {
-            p2Score++;
+            p2Score = 1;
         }
     }
 
@@ -159,42 +162,42 @@ window.onload = function () {
         }
         else {
             if (arrboard[0] == 'O') {
-                if (arrboard[1] != 'O' && arrboard[1] != 'X' && arrboard[2] == 'O') {
+                if (arrboard[1] == '#' && arrboard[2] == 'O') {
                     imgMove[1].style.display = "block";
                     arrboard[1] = 'O';
                     imgMove[1].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 1;
                 }
-                else if (arrboard[3] != 'O' && arrboard[3] != 'X' && arrboard[6] == 'O') {
+                else if (arrboard[3] == '#' && arrboard[6] == 'O') {
                     imgMove[3].style.display = "block";
                     arrboard[3] = 'O';
                     imgMove[3].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 3;
                 }
-                else if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[8] == 'O') {
+                else if (arrboard[4] == '#' && arrboard[8] == 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 4;
                 }
-                else if (arrboard[1] != 'O' && arrboard[1] != 'X' && arrboard[2] != 'O') {
+                else if (arrboard[1] == '#' && arrboard[2] != 'O') {
                     imgMove[1].style.display = "block";
                     arrboard[1] = 'O';
                     imgMove[1].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 1;
                 }
-                else if (arrboard[3] != 'O' && arrboard[3] != 'X' && arrboard[6] != 'O') {
+                else if (arrboard[3] == '#' && arrboard[6] != 'O') {
                     imgMove[3].style.display = "block";
                     arrboard[3] = 'O';
                     imgMove[3].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 3;
                 }
-                else if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[8] != 'O') {
+                else if (arrboard[4] == '#' && arrboard[8] != 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
@@ -203,42 +206,42 @@ window.onload = function () {
                 }
             }
             else if (arrboard[3] == 'O') {
-                if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[5] == 'O') {
+                if (arrboard[4] == '#' && arrboard[5] == 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 4;
                 }
-                else if (arrboard[0] != 'O' && arrboard[0] != 'X' && arrboard[6] == 'O') {
+                else if (arrboard[0] == '#' && arrboard[6] == 'O') {
                     imgMove[0].style.display = "block";
                     arrboard[0] = 'O';
                     imgMove[0].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 0;
                 }
-                else if (arrboard[6] != 'O' && arrboard[6] != 'X' && arrboard[0] == 'O') {
+                else if (arrboard[6] == '#' && arrboard[0] == 'O') {
                     imgMove[6].style.display = "block";
                     arrboard[6] = 'O';
                     imgMove[6].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 6;
                 }
-                else if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[5] != 'O') {
+                else if (arrboard[4] == '#' && arrboard[5] != 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 4;
                 }
-                else if (arrboard[0] != 'O' && arrboard[0] != 'X' && arrboard[6] != 'O') {
+                else if (arrboard[0] == '#' && arrboard[6] != 'O') {
                     imgMove[0].style.display = "block";
                     arrboard[0] = 'O';
                     imgMove[0].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 0;
                 }
-                else if (arrboard[6] != 'O' && arrboard[6] != 'X' && arrboard[0] != 'O') {
+                else if (arrboard[6] == '#' && arrboard[0] != 'O') {
                     imgMove[6].style.display = "block";
                     arrboard[6] = 'O';
                     imgMove[6].src = "images/O.png";
@@ -247,42 +250,42 @@ window.onload = function () {
                 }
             }
             else if (arrboard[6] == 'O') {
-                if (arrboard[3] != 'O' && arrboard[3] != 'X' && arrboard[0] == 'O') {
+                if (arrboard[3] == '#' && arrboard[0] == 'O') {
                     imgMove[3].style.display = "block";
                     arrboard[3] = 'O';
                     imgMove[3].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 3;
                 }
-                else if (arrboard[7] != 'O' && arrboard[7] != 'X' && arrboard[8] == 'O') {
+                else if (arrboard[7] == '#' && arrboard[8] == 'O') {
                     imgMove[7].style.display = "block";
                     arrboard[7] = 'O';
                     imgMove[7].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 7;
                 }
-                else if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[2] == 'O') {
+                else if (arrboard[4] == '#' && arrboard[2] == 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 4;
                 }
-                else if (arrboard[3] != 'O' && arrboard[3] != 'X' && arrboard[0] != 'O') {
+                else if (arrboard[3] == '#' && arrboard[0] != 'O') {
                     imgMove[3].style.display = "block";
                     arrboard[3] = 'O';
                     imgMove[3].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 3;
                 }
-                else if (arrboard[7] != 'O' && arrboard[7] != 'X' && arrboard[8] != 'O') {
+                else if (arrboard[7] == '#' && arrboard[8] != 'O') {
                     imgMove[7].style.display = "block";
                     arrboard[7] = 'O';
                     imgMove[7].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 7;
                 }
-                else if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[2] != 'O') {
+                else if (arrboard[4] == '#' && arrboard[2] != 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
@@ -291,42 +294,42 @@ window.onload = function () {
                 }
             }
             else if (arrboard[1] == 'O') {
-                if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[7] == 'O') {
+                if (arrboard[4] == '#' && arrboard[7] == 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 4;
                 }
-                else if (arrboard[0] != 'O' && arrboard[0] != 'X' && arrboard[2] == 'O') {
+                else if (arrboard[0] == '#' && arrboard[2] == 'O') {
                     imgMove[0].style.display = "block";
                     arrboard[0] = 'O';
                     imgMove[0].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 0;
                 }
-                else if (arrboard[2] != 'O' && arrboard[2] != 'X' && arrboard[0] == 'O') {
+                else if (arrboard[2] == '#' && arrboard[0] == 'O') {
                     imgMove[2].style.display = "block";
                     arrboard[2] = 'O';
                     imgMove[2].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 2;
                 }
-                else if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[7] != 'O') {
+                else if (arrboard[4] == '#' && arrboard[7] != 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 4;
                 }
-                else if (arrboard[0] != 'O' && arrboard[0] != 'X' && arrboard[2] != 'O') {
+                else if (arrboard[0] == '#' && arrboard[2] != 'O') {
                     imgMove[0].style.display = "block";
                     arrboard[0] = 'O';
                     imgMove[0].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 0;
                 }
-                else if (arrboard[2] != 'O' && arrboard[2] != 'X' && arrboard[0] != 'O') {
+                else if (arrboard[2] == '#' && arrboard[0] != 'O') {
                     imgMove[2].style.display = "block";
                     arrboard[2] = 'O';
                     imgMove[2].src = "images/O.png";
@@ -335,56 +338,56 @@ window.onload = function () {
                 }
             }
             else if (arrboard[4] == 'O') {
-                if (arrboard[3] != 'O' && arrboard[3] != 'X' && arrboard[5] == 'O') {
+                if (arrboard[3] == '#' && arrboard[5] == 'O') {
                     imgMove[3].style.display = "block";
                     arrboard[3] = 'O';
                     imgMove[3].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 3;
                 }
-                else if (arrboard[5] != 'O' && arrboard[5] != 'X' && arrboard[3] == 'O') {
+                else if (arrboard[5] == '#' && arrboard[3] == 'O') {
                     imgMove[5].style.display = "block";
                     arrboard[5] = 'O';
                     imgMove[5].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 5;
                 }
-                else if (arrboard[1] != 'O' && arrboard[1] != 'X' && arrboard[7] == 'O') {
+                else if (arrboard[1] == '#' && arrboard[7] == 'O') {
                     imgMove[1].style.display = "block";
                     arrboard[1] = 'O';
                     imgMove[1].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 1;
                 }
-                else if (arrboard[7] != 'O' && arrboard[7] != 'X' && arrboard[1] == 'O') {
+                else if (arrboard[7] == '#' && arrboard[1] == 'O') {
                     imgMove[7].style.display = "block";
                     arrboard[7] = 'O';
                     imgMove[7].src = "images/O.png";
-                    // checkBoard++;
+                    // checkBoard++;  
                     // randNum = 7;
                 }
-                else if (arrboard[0] != 'O' && arrboard[0] != 'X' && arrboard[8] == 'O') {
+                else if (arrboard[0] == '#' && arrboard[8] == 'O') {
                     imgMove[0].style.display = "block";
                     arrboard[0] = 'O';
                     imgMove[0].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 0;
                 }
-                else if (arrboard[8] != 'O' && arrboard[8] != 'X' && arrboard[0] == 'O') {
+                else if (arrboard[8] == '#' && arrboard[0] == 'O') {
                     imgMove[8].style.display = "block";
                     arrboard[8] = 'O';
                     imgMove[8].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 8;
                 }
-                else if (arrboard[2] != 'O' && arrboard[2] != 'X' && arrboard[6] == 'O') {
+                else if (arrboard[2] == '#' && arrboard[6] == 'O') {
                     imgMove[2].style.display = "block";
                     arrboard[2] = 'O';
                     imgMove[2].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 2;
                 }
-                else if (arrboard[6] != 'O' && arrboard[6] != 'X' && arrboard[2] == 'O') {
+                else if (arrboard[6] == '#' && arrboard[2] == 'O') {
                     imgMove[6].style.display = "block";
                     arrboard[6] = 'O';
                     imgMove[6].src = "images/O.png";
@@ -395,7 +398,7 @@ window.onload = function () {
 
 
 
-                else if (arrboard[3] != 'O' && arrboard[3] != 'X' && arrboard[5] != 'O') {
+                else if (arrboard[3] == '#' && arrboard[5] != 'O') {
                     imgMove[3].style.display = "block";
                     arrboard[3] = 'O';
                     imgMove[3].src = "images/O.png";
@@ -403,49 +406,49 @@ window.onload = function () {
                     // randNum = 3;
                 }
 
-                else if (arrboard[5] != 'O' && arrboard[5] != 'X' && arrboard[3] != 'O') {
+                else if (arrboard[5] == '#' && arrboard[3] != 'O') {
                     imgMove[5].style.display = "block";
                     arrboard[5] = 'O';
                     imgMove[5].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 5;
                 }
-                else if (arrboard[1] != 'O' && arrboard[1] != 'X' && arrboard[7] != 'O') {
+                else if (arrboard[1] == '#' && arrboard[7] != 'O') {
                     imgMove[1].style.display = "block";
                     arrboard[1] = 'O';
                     imgMove[1].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 1;
                 }
-                else if (arrboard[7] != 'O' && arrboard[7] != 'X' && arrboard[1] != 'O') {
+                else if (arrboard[7] == '#' && arrboard[1] != 'O') {
                     imgMove[7].style.display = "block";
                     arrboard[7] = 'O';
                     imgMove[7].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 7;
                 }
-                else if (arrboard[0] != 'O' && arrboard[0] != 'X' && arrboard[8] != 'O') {
+                else if (arrboard[0] == '#' && arrboard[8] != 'O') {
                     imgMove[0].style.display = "block";
                     arrboard[0] = 'O';
                     imgMove[0].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 0;
                 }
-                else if (arrboard[8] != 'O' && arrboard[8] != 'X' && arrboard[0] != 'O') {
+                else if (arrboard[8] == '#' && arrboard[0] != 'O') {
                     imgMove[8].style.display = "block";
                     arrboard[8] = 'O';
                     imgMove[8].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 8;
                 }
-                else if (arrboard[2] != 'O' && arrboard[2] != 'X' && arrboard[6] != 'O') {
+                else if (arrboard[2] == '#' && arrboard[6] != 'O') {
                     imgMove[2].style.display = "block";
                     arrboard[2] = 'O';
                     imgMove[2].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 2;
                 }
-                else if (arrboard[6] != 'O' && arrboard[6] != 'X' && arrboard[2] != 'O') {
+                else if (arrboard[6] == '#' && arrboard[2] != 'O') {
                     imgMove[6].style.display = "block";
                     arrboard[6] = 'O';
                     imgMove[6].src = "images/O.png";
@@ -454,42 +457,42 @@ window.onload = function () {
                 }
             }
             else if (arrboard[7] == 'O') {
-                if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[1] == 'O') {
+                if (arrboard[4] == '#' && arrboard[1] == 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 4;
                 }
-                else if (arrboard[6] != 'O' && arrboard[6] != 'X' && arrboard[8] == 'O') {
+                else if (arrboard[6] == '#' && arrboard[8] == 'O') {
                     imgMove[6].style.display = "block";
                     arrboard[6] = 'O';
                     imgMove[6].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 6;
                 }
-                else if (arrboard[8] != 'O' && arrboard[8] != 'X' && arrboard[6] == 'O') {
+                else if (arrboard[8] == '#' && arrboard[6] == 'O') {
                     imgMove[8].style.display = "block";
                     arrboard[8] = 'O';
                     imgMove[8].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 8;
                 }
-                else if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[1] != 'O') {
+                else if (arrboard[4] == '#' && arrboard[1] != 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 4;
                 }
-                else if (arrboard[6] != 'O' && arrboard[6] != 'X' && arrboard[8] != 'O') {
+                else if (arrboard[6] == '#' && arrboard[8] != 'O') {
                     imgMove[6].style.display = "block";
                     arrboard[6] = 'O';
                     imgMove[6].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 6;
                 }
-                else if (arrboard[8] != 'O' && arrboard[8] != 'X' && arrboard[6] != 'O') {
+                else if (arrboard[8] == '#' && arrboard[6] != 'O') {
                     imgMove[8].style.display = "block";
                     arrboard[8] = 'O';
                     imgMove[8].src = "images/O.png";
@@ -498,42 +501,42 @@ window.onload = function () {
                 }
             }
             else if (arrboard[2] == 'O') {
-                if (arrboard[1] != 'O' && arrboard[1] != 'X' && arrboard[0] == 'O') {
+                if (arrboard[1] == '#' && arrboard[0] == 'O') {
                     imgMove[1].style.display = "block";
                     arrboard[1] = 'O';
                     imgMove[1].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 1;
                 }
-                else if (arrboard[5] != 'O' && arrboard[5] != 'X' && arrboard[8] == 'O') {
+                else if (arrboard[5] == '#' && arrboard[8] == 'O') {
                     imgMove[5].style.display = "block";
                     arrboard[5] = 'O';
                     imgMove[5].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 5;
                 }
-                else if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[6] == 'O') {
+                else if (arrboard[4] == '#' && arrboard[6] == 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 6;
                 }
-                else if (arrboard[1] != 'O' && arrboard[1] != 'X' && arrboard[0] != 'O') {
+                else if (arrboard[1] == '#' && arrboard[0] != 'O') {
                     imgMove[1].style.display = "block";
                     arrboard[1] = 'O';
                     imgMove[1].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 1;
                 }
-                else if (arrboard[5] != 'O' && arrboard[5] != 'X' && arrboard[8] != 'O') {
+                else if (arrboard[5] == '#' && arrboard[8] != 'O') {
                     imgMove[5].style.display = "block";
                     arrboard[5] = 'O';
                     imgMove[5].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 5;
                 }
-                else if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[6] != 'O') {
+                else if (arrboard[4] == '#' && arrboard[6] != 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
@@ -542,42 +545,42 @@ window.onload = function () {
                 }
             }
             else if (arrboard[5] == 'O') {
-                if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[3] == 'O') {
+                if (arrboard[4] == '#' && arrboard[3] == 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 4;
                 }
-                else if (arrboard[2] != 'O' && arrboard[2] != 'X' && arrboard[8] == 'O') {
+                else if (arrboard[2] == '#' && arrboard[8] == 'O') {
                     imgMove[2].style.display = "block";
                     arrboard[2] = 'O';
                     imgMove[2].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 2;
                 }
-                else if (arrboard[8] != 'O' && arrboard[8] != 'X' && arrboard[2] == 'O') {
+                else if (arrboard[8] == '#' && arrboard[2] == 'O') {
                     imgMove[8].style.display = "block";
                     arrboard[8] = 'O';
                     imgMove[8].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 8;
                 }
-                else if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[3] != 'O') {
+                else if (arrboard[4] == '#' && arrboard[3] != 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 4;
                 }
-                else if (arrboard[2] != 'O' && arrboard[2] != 'X' && arrboard[8] != 'O') {
+                else if (arrboard[2] == '#' && arrboard[8] != 'O') {
                     imgMove[2].style.display = "block";
                     arrboard[2] = 'O';
                     imgMove[2].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 2;
                 }
-                else if (arrboard[8] != 'O' && arrboard[8] != 'X' && arrboard[2] != 'O') {
+                else if (arrboard[8] == '#' && arrboard[2] != 'O') {
                     imgMove[8].style.display = "block";
                     arrboard[8] = 'O';
                     imgMove[8].src = "images/O.png";
@@ -586,21 +589,21 @@ window.onload = function () {
                 }
             }
             else if (arrboard[8] == 'O') {
-                if (arrboard[5] != 'O' && arrboard[5] != 'X' && arrboard[2] == 'O') {
+                if (arrboard[5] == '#' && arrboard[2] == 'O') {
                     imgMove[5].style.display = "block";
                     arrboard[5] = 'O';
                     imgMove[5].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 5;
                 }
-                else if (arrboard[7] != 'O' && arrboard[7] != 'X' && arrboard[6] == 'O') {
+                else if (arrboard[7] == '#' && arrboard[6] == 'O') {
                     imgMove[7].style.display = "block";
                     arrboard[7] = 'O';
                     imgMove[7].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 7;
                 }
-                else if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[0] == 'O') {
+                else if (arrboard[4] == '#' && arrboard[0] == 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
@@ -608,21 +611,21 @@ window.onload = function () {
                     // randNum = 4;
                 }
 
-                else if (arrboard[5] != 'O' && arrboard[5] != 'X' && arrboard[2] != 'O') {
+                else if (arrboard[5] == '#' && arrboard[2] != 'O') {
                     imgMove[5].style.display = "block";
                     arrboard[5] = 'O';
                     imgMove[5].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 5;
                 }
-                else if (arrboard[7] != 'O' && arrboard[7] != 'X' && arrboard[6] != 'O') {
+                else if (arrboard[7] == '#' && arrboard[6] != 'O') {
                     imgMove[7].style.display = "block";
                     arrboard[7] = 'O';
                     imgMove[7].src = "images/O.png";
                     // checkBoard++;
                     // randNum = 7;
                 }
-                else if (arrboard[4] != 'O' && arrboard[4] != 'X' && arrboard[0] != 'O') {
+                else if (arrboard[4] == '#' && arrboard[0] != 'O') {
                     imgMove[4].style.display = "block";
                     arrboard[4] = 'O';
                     imgMove[4].src = "images/O.png";
@@ -633,6 +636,7 @@ window.onload = function () {
         }
     }
 
+    //* Alternative Function
     function vsCompMove(cellPos) {
         if (arrboard[cellPos] === '#') {
             imgMove[cellPos].style.display = "block";
@@ -643,7 +647,7 @@ window.onload = function () {
         else {
             vsCompMove();
         }
-    
+
         setTimeout(function () {
             var computerMove = Math.floor((Math.random() * 9));
 
@@ -656,7 +660,7 @@ window.onload = function () {
                     compFirstMove = false;
                 }
                 else {
-                    
+
                 }
             }
             else {
@@ -666,7 +670,7 @@ window.onload = function () {
         }, 500);
     }
 
-    // Function to handle a player's move
+    //* Function to handle a player's move
     function playersMove(cellPos, playersMove) {
         if (arrboard[cellPos] === '#') {
             imgMove[cellPos].style.display = "block";
@@ -681,20 +685,24 @@ window.onload = function () {
     }
 
     multiplayer.addEventListener('click', function () {
+        this.style.backgroundColor = "lightgray"
+        vsComputer.style.backgroundColor = "white"
         gameMode = "multiplayer";
         game();
     });
 
     vsComputer.addEventListener('click', function () {
+        this.style.backgroundColor = "lightgray"
+        multiplayer.style.backgroundColor = "white"
         gameMode = "vscomputer";
         game();
     });
 
     function game() {
-        // Add a single click event listener for all cells
         for (let cellPos = 0; cellPos < 9; cellPos++) {
+            //* Add a single click event listener for all cells
             cell[cellPos].addEventListener('click', function () {
-                // Multiplayer Mode
+                //* Multiplayer Mode
                 if (gameMode === "multiplayer") {
                     if (playerID === 1) {
                         playersMove(cellPos, 'X'); // Player 1's move
@@ -711,34 +719,44 @@ window.onload = function () {
                         setTimeout(result, 500);    // Function call to display the result of the game with a bit delay
                     }
                 }
-                // Versus Computer Mode
+                //* Versus Computer Mode
                 else {
-                    // vsCompMove(cellPos);
-                    //if (playerID === 1) {
-                        playersMove(cellPos, 'X'); // Player 1's move
-                        //playerID = 2; // Switch to Player 2 for the next move
-                    //}
-
-                    setTimeout(function() {
-                        if (compFirstMove == true) {
-                            var computerMove = Math.floor((Math.random() * 9));
-                            if (arrboard[computerMove] === '#') {
-                                playersMove(computerMove, 'O'); // Player 2's move
-                                compFirstMove = false;
-                            }
-                        }
-                        else {
-                            allocatedCell++;
-                            computerDecission();
-                        }
-                        //playerID = 1; // Switch to Player 1 for the next move
-                    }, 500)
+                    //vsCompMove(cellPos);
+                    playersMove(cellPos, 'X'); // Player 1's move
 
                     gameLogic();
 
                     if (p1Score != 0 || p2Score != 0 || allocatedCell == 9) {
                         setTimeout(result, 500);    // Function call to display the result of the game with a bit delay
                     }
+
+                    setTimeout(function () {
+                        if (compFirstMove == true) {
+                            var computerMove = Math.floor((Math.random() * 9));
+
+                            while (arrboard[computerMove] !== '#') {
+                                computerMove = Math.floor((Math.random() * 9));
+                            }
+
+                            playersMove(computerMove, 'O'); // Computer's move
+                            compFirstMove = false;
+                        }
+                        else {
+                            if (p1Score != 0) {
+                                return;
+                            }
+
+                            computerDecission();
+                            allocatedCell++;
+                        }
+
+                        gameLogic();
+
+                        if (p1Score != 0 || p2Score != 0 || allocatedCell == 9) {
+                            setTimeout(result, 500);    // Function call to display the result of the game with a bit delay
+                            return;
+                        }
+                    }, 500)
                 }
             });
         }
